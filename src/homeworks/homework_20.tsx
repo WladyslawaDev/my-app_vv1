@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css";
+import BessyImage from "./Bessy1.jpg";
 function HW20 () {
     let firstName:string = "John";
     let lastName:string = " Doe";
@@ -8,10 +9,16 @@ function HW20 () {
     let experience: number = 5;
     let email: string = "john.doe@google.com";
     let programLangs: [string, string, string] = ["JavaScript", "Python", "Machine Learning"]; // tupel
+    let imageUrl: string = BessyImage;
     return (
         <div className="container-Wrapper">
             <div className="pesonalCard">
-            <h2 className="name">{firstName} {lastName}</h2>
+            <div className="avatarWithName">
+                    <h2 className="name">{firstName} {lastName}</h2>
+                    <div className="avatarContainer">
+                    <img className="avatar" src={imageUrl} alt="User Avatar" />
+                </div>
+                </div>
 {/* we can also use table here */}
 <ul className="lineSpace">
 <li><span className="bold-text">Job:</span> {job}</li>
