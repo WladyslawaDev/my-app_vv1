@@ -1,28 +1,18 @@
-import React, { FC, HTMLProps } from "react";
-import "./styles.css";
+import { InputComponent, Label, InputField } from './styles';
+import { InputProps } from './types';
 
-interface InputProps extends HTMLProps<HTMLInputElement> {
-  id: string;
-  label: string;
-  type?: string;
-}
-
-const Input: FC<InputProps> = ({ id, name, placeholder, label, type = "text", ...rest }) => {
+function Input({ id, name, placeholder, label, type = 'text', disabled = false }: InputProps) {
   return (
-    <div className="inputcomponent-container">
-      <label htmlFor={id} className="inputcomponent-label">
-        {label}
-      </label>
-      <input
-        className="input-component"
+    <InputComponent disabled={disabled}>
+      <Label htmlFor={id}>{label}</Label>
+      <InputField
         name={name}
         id={id}
         placeholder={placeholder}
         type={type}
-        {...rest} // przekazywanie dodatkowych właściwości do input
+        disabled={disabled}
       />
-    </div>
+    </InputComponent>
   );
 }
-
 export default Input;

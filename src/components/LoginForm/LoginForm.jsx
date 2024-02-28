@@ -1,13 +1,12 @@
-import "./styles.css";
-
-import Button from "../Button/Button";
-import Input from "../Input/Input";
+import { LoginFormWrapper, LoginFormName, InputsContainer } from './styles';
+import Button from '../Button/Button';
+import Input from '../Input/Input';
 
 function LoginForm() {
   return (
-    <form className="loginform-wrapper">
-      <p className="loginform-name">Login form</p>
-      <div className="inputs-container">
+    <LoginFormWrapper>
+      <LoginFormName>Login form</LoginFormName>
+      <InputsContainer>
         <Input
           id="login-email"
           placeholder="Enter your email"
@@ -22,9 +21,9 @@ function LoginForm() {
           label="Password"
           type="password"
         />
-      </div>
+      </InputsContainer>
       <Button name="Login" />
-    </form>
+    </LoginFormWrapper>
   );
 }
 
