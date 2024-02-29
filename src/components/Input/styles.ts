@@ -1,27 +1,19 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
-interface InputComponentProps {
-  disabled: boolean;
-}
-
-export const InputComponent = styled.div<InputComponentProps>`
+export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
   width: 100%;
   height: fit-content;
-
-  ${({ disabled }) => disabled && `
-    opacity: 0.7; // Dodaj inne style dla wyłączonego stanu
-  `}
 `;
 
-export const Label = styled.label`
+export const InputLabel = styled.label`
   font-size: 16px;
   color: #6f6f6f;
 `;
 
-export const InputField = styled.input<InputComponentProps>` 
+export const InputComponent = styled.input`
   width: 100%;
   height: 50px;
   padding: 12px;
@@ -29,13 +21,14 @@ export const InputField = styled.input<InputComponentProps>`
   border: 1px solid black;
   border-radius: 4px;
   font-size: 16px;
+  background-color: ${({ disabled }) =>
+    disabled ? "lightgrey" : "transparent"};
 
   &::placeholder {
     color: #6f6f6f;
   }
 
-  &:disabled {
-    background-color: #ccc; 
-    cursor: not-allowed;
+  &:hover {
+    border: ${({disabled}) => (disabled ? '1px solid black' : '1px solid #1f27f5')};
   }
 `;

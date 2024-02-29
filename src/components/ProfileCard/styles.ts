@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const ProfileCardContainer = styled.div`
   display: flex;
@@ -21,3 +21,7 @@ export const ProfileAvatar = styled.img`
   height: 100%;
   width: 100%;
 `;
+
+export const FirstLastName = styled.h2``;
+
+export const ProfileCardInfo = styled.p``;

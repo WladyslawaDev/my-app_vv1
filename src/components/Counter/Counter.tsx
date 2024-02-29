@@ -1,25 +1,17 @@
-import { CounterProps } from './types';
-import { CounterWrapper, ButtonControl, Count } from './styles';
-import styled from "@emotion/styled";
-import Button from "../Button/Button";
+import Button from "components/Button/Button";
 
-
-const StyledButton = styled(Button)`
-  
-  color: #ffffff;
-  background-color: #1f27f5;
-
-`;
+import { CounterProps } from "./types";
+import { CounterWrapper, ButtonControl, Count } from "./styles";
 
 function Counter({ count, onMinus, onPlus }: CounterProps) {
   return (
     <CounterWrapper>
       <ButtonControl>
-        <StyledButton name="-" onClick={onMinus} />
+        <Button name="-" onClick={onMinus} />
       </ButtonControl>
       <Count>{count}</Count>
       <ButtonControl>
-        <StyledButton name="+" onClick={onPlus} />
+        <Button name="+" onClick={onPlus} />
       </ButtonControl>
     </CounterWrapper>
   );

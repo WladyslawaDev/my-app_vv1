@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 
 interface ButtonComponentProps {
   isRed: boolean | undefined;
-  disabled: boolean;
 }
 
 export const ButtonComponent = styled.button<ButtonComponentProps>`
@@ -12,13 +11,20 @@ export const ButtonComponent = styled.button<ButtonComponentProps>`
   border: none;
   border-radius: 4px;
   padding: 20px;
-  background-color: ${({ isRed, disabled }) => (disabled ? '#ccc' : isRed ? 'red' : '#1f27f5')};
-  color: ${({ disabled }) => (disabled ? '#666' : 'white')};
-  font-size: 16px;
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-  opacity: ${({ disabled }) => (disabled ? 0.7 : 1)};
+  /* background-color: ${({ isRed, disabled }) =>
+    isRed ? "red" : disabled ? "grey" : "#1f27f5"}; */
+  background-color: ${({ isRed, disabled }) => {
+    if (isRed) {
+      return "red";
+    }
 
-  &:hover {
-    background-color: ${({ isRed, disabled }) => (disabled ? '#ccc' : isRed ? 'darkred' : '#0e1647')};
-  }
+    if (disabled) {
+      return "grey";
+    }
+
+    return "#1f27f5";
+  }};
+  color: white;
+  font-size: 16px;
+  cursor: ${({ disabled }) => (disabled ? "default" : "pointer")};
 `;
