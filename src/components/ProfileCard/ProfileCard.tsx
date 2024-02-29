@@ -1,43 +1,29 @@
-import React, { FC, ReactNode } from "react";
-import "./styles.css";
+import { ProfileCardContainer, AvatarControl, ProfileAvatar } from './styles';
+import { ProfileCardProps } from './types';
 
-interface ProfileData {
-  firstName: string;
-  lastName: string;
-  career: string;
-  hairColor: string;
-  hobby: string;
-}
-
-interface ProfileCardProps {
-  profileData: ProfileData;
-  imgSrc: string;
-  children?: ReactNode;
-}
-
-const ProfileCard: FC<ProfileCardProps> = ({ profileData, imgSrc, children = <h1>User Card</h1> }) => {
-  console.log(profileData);
-
+function ProfileCard({
+  profileData,
+  imgSrc,
+  children = <h1>User Card</h1>,
+}: ProfileCardProps) {
   const normalizeFirstLastName = () => {
     return `${profileData.firstName} ${profileData.lastName}`;
-  }
+  };
 
   return (
-    <div className="profile-card">
+    <ProfileCardContainer>
       {children}
-      <div className="avatar-control">
-        <img
-          className="profile-avatar"
-          alt="Profile Avatar"
-          src={imgSrc}
-        />
-      </div>
+      <AvatarControl>
+        <ProfileAvatar alt="Profile Avatar" src={imgSrc} />
+      </AvatarControl>
       <h2>{normalizeFirstLastName()}</h2>
       <p>Career: {profileData.career}</p>
       <p>Hair Color: {profileData.hairColor}</p>
       <p>Hobby: {profileData.hobby}</p>
-    </div>
+    </ProfileCardContainer>
   );
 }
 
 export default ProfileCard;
+
+

@@ -1,13 +1,11 @@
-import "./styles.css";
+import { ButtonComponent } from "./styles";
+import { ButtonProps, ButtonTypes } from "./types";
 
-import { ButtonProps } from "./types";
-
-// Как типизировать props
-function Button({ name, type = "button", onClick = () => {} }: ButtonProps) {
+function Button({ isRed = false, name, type = 'button', onClick = () => {}, disabled = false }: ButtonProps) {
   return (
-    <button className="button-component" onClick={onClick} type={type}>
+    <ButtonComponent isRed={isRed} disabled={disabled} className="button-component" onClick={onClick} type={type}>
       {name}
-    </button>
+    </ButtonComponent>
   );
 }
 
