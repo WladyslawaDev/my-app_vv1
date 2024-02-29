@@ -1,18 +1,30 @@
-import { InputComponent, Label, InputField } from './styles';
-import { InputProps } from './types';
+import { InputProps } from "./types";
+import { InputContainer, InputComponent, InputLabel } from "./styles";
 
-function Input({ id, name, placeholder, label, type = 'text', disabled = false }: InputProps) {
+function Input({
+  id,
+  disabled = false,
+  name,
+  placeholder,
+  label,
+  type = "text",
+  value,
+  onChange,
+}: InputProps) {
   return (
-    <InputComponent disabled={disabled}>
-      <Label htmlFor={id}>{label}</Label>
-      <InputField
+    <InputContainer>
+      <InputLabel htmlFor={id}>{label}</InputLabel>
+      <InputComponent
+        value={value}
+        onChange={onChange}
         name={name}
         id={id}
+        disabled={disabled}
         placeholder={placeholder}
         type={type}
-        disabled={disabled}
       />
-    </InputComponent>
+    </InputContainer>
   );
 }
+
 export default Input;

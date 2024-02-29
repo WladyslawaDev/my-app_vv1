@@ -1,23 +1,11 @@
 import styled from "@emotion/styled";
+import { css } from "@emotion/react";
 
-interface PageTitleProps {
-  isRed: boolean;
-}
-
-export const Lesson22Wrapper = styled.div`
+export const Lesson23Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
   gap: 20px;
-`;
-
-export const PageTitle = styled.p<PageTitleProps>`
-  color: ${({ isRed }) => (isRed ? "red" : "blue")};
-  font-size: 30px;
-`;
-
-export const ButtonConrol = styled.div`
-  width: 300px;
 `;
 
 export const ContainerWrapper = styled.div`
@@ -25,9 +13,8 @@ export const ContainerWrapper = styled.div`
   gap: 10px;
 `;
 
-
 // Создаем шаблон для создания 3 разных контейнеров
-const Container = styled.div`
+const commonBoxStyles = css`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,15 +25,22 @@ const Container = styled.div`
   color: white;
 `;
 
-// Используем уже не div, а шаблон Container
-export const BlueContainer = styled(Container)`
+// Передаем каждому боксу commonBoxStyles
+export const BoxBlueContainer = styled.div`
+  ${commonBoxStyles};
   background-color: blue;
 `;
 
-export const RedContainer = styled(Container)`
+export const BoxRedContainer = styled.div`
+  ${commonBoxStyles};
   background-color: red;
 `;
 
-export const GreenContainer = styled(Container)`
+export const BoxGreenContainer = styled.div`
+  ${commonBoxStyles};
   background-color: green;
+`;
+
+export const InputComponent = styled.input`
+  width: 200px;
 `;
