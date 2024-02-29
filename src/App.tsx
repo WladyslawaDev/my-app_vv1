@@ -7,9 +7,9 @@ import GlobalStyles from "styles/GlobalStyles";
 import Lesson23 from "lessons/Lesson23/Lesson23";
 
 // Homeworks
-import Homework20 from "./homeworks/Homework20/Homework20";
-import Homework21 from "./homeworks/Homework21/Homework21";
-import Homework22 from "homeworks/Homework22/Homework22";
+// import Homework20 from "./homeworks/Homework20/Homework20";
+// // import Homework21 from "./homeworks/Homework21/Homework21";
+// import Homework22 from "homeworks/Homework22/Homework22";
 
 function App() {
   return (
