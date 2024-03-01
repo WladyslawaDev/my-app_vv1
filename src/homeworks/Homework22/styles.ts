@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const Homework22Wrapper = styled.div`
+export const HW23Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
