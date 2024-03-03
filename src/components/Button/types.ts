@@ -5,5 +5,6 @@ export interface ButtonProps {
   disabled?: boolean;
   isRed?: boolean;
   type?: ButtonTypes;
-  onClick?: () => void;
+  //onClick?: () => void;
+  onClick?: (event: React.FormEvent) => void;
 }
