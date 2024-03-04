@@ -1,31 +1,48 @@
-// styles.ts
 import styled from "@emotion/styled";
 
-export const HW23Wrapper = styled.div`
+export const EmployeeFormWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   flex: 1;
-  gap: 20px;
-  padding: 20px; 
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #f5f5f5;
+  padding: 70px;
+  background-color: black;
 `;
 
-export const InputsContainer = styled.div`
+export const EmployeeFormContainer = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 30px;
-  height: 592px; 
-  top: 192px; 
-  left: 71px;
+  width: 590px;
+  height: fit-content;
   padding: 60px;
+  gap: 20px;
+  background-color: white;
 `;
 
-export const ButtonsContainer = styled.div`
+export const EmployeeCard = styled.div`
   display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 500px;
+  flex-direction: column;
+  width: 590px;
+  height: 470px;
+  padding: 60px;
+  gap: 30px;
+  background-color: white;
+`;
+
+export const EmployeeInfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
+export const EmployeeTitle = styled.p`
+  font-size: 16px;
+  color: #6f6f6f;
+`;
+
+export const EmployeeInfoText = styled.p`
+  font-size: 28px;
+  font-weight: bold;
+  color: black;
 `;

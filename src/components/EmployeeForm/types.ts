@@ -1,7 +1,6 @@
-export interface ProfileData {
-    firstName: string;
+export interface EmployeeInfo {
+    name: string;
     lastName: string;
-    age: string;
-    position: string; 
-
-}
+    ageValue: string;
+    jobPosition: string;
+  }

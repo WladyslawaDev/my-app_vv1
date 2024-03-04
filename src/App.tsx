@@ -5,7 +5,10 @@ import GlobalStyles from "styles/GlobalStyles";
 // import Lesson21 from "./lessons/Lesson21/Lesson21";
 // import Lesson22 from "./lessons/Lessons22/Lesson22";
 //import Lesson23 from "lessons/Lesson23/Lesson23";
-import HW23 from "homeworks/HW23/HW23";
+import Lesson24 from "lessons/Lesson24/Lesson24";
+import HW24 from "homeworks/HW24/HW24";
+
+// import HW23 from "homeworks/HW23/HW23";
 
 // Homeworks
 // import Homework20 from "./homeworks/Homework20/Homework20";
@@ -22,7 +25,9 @@ function App() {
       {/* <Homework20 /> */}
       {/* <Homework21 /> */}
       {/* <Lesson23 /> */}
-      <HW23 />
+      {/* <HW23 /> */}
+      {/* <Lesson24 /> */}
+      <HW24 />
     
     </>
   );
