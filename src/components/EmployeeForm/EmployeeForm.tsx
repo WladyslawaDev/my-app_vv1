@@ -1,106 +1,127 @@
+import { useState, ChangeEvent, SetStateAction, Dispatch } from "react";
+
 import Input from "components/Input/Input";
 import Button from "components/Button/Button";
 
-import { useState,  ChangeEvent } from 'react';
-
-import { useForm } from 'react-hook-form';
-
+import { EmployeeInfo } from "./types";
 import {
-  HW23Wrapper,
-  InputsContainer,
-  ButtonsContainer
+  EmployeeFormWrapper,
+  EmployeeFormContainer,
+  EmployeeCard,
+  EmployeeInfoContainer,
+  EmployeeInfoText,
+  EmployeeTitle,
 } from "./styles";
 
- import {ProfileData } from "./types";
-
 function EmployeeForm() {
-    const { register, handleSubmit, reset } = useForm<ProfileData>();
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [age, setAge] = useState("");
-    const [position, setPosition] = useState("");
-    const [submittedData, setSubmittedData] = useState<ProfileData | null>(null);
-  
-    const onSubmit = (data:ProfileData) => {
-      setSubmittedData(data);
-      reset();
-    };
+  const [nameValue, setNameValue] = useState<string>("");
+  const [lastNameValue, setLastNameValue] = useState<string>("");
+  const [ageValue, setAgeValue] = useState<string>("");
+  const [jobPositionValue, setJobPositionValue] = useState<string>("");
+  // Создадим state, который решает когда нам карточку показывать, а когда нет
+  const [isShowCard, setIsShowCard] = useState<boolean>(false);
+  // Создаем контейнер(стейт), в котором будет храниться информация для карточки,
+  // чтобы она туда добавлялась только на onClick
+  const [userInfo, setUserInfo] = useState<EmployeeInfo>({
+    name: "",
+    lastName: "",
+    ageValue: "",
+    jobPosition: "",
+  });
 
-    const showSubmittedForm = () => {
-      if (submittedData) {
-        return (
-          <div>
-            <h2>Submitted Form:</h2>
-            <p>First Name: {submittedData.firstName}</p>
-            <p>Last Name: {submittedData.lastName}</p>
-            <p>Age: {submittedData.age}</p>
-            <p>Position: {submittedData.position}</p>
-          </div>
-        );
-      }
-      return null;
-    };
-  
-    const handleShowCard = (e: React.FormEvent) => {
-      e.preventDefault();
-      if (firstName !== '' && lastName !== '' && age !== '' && position !== '') {
-        //showSubmittedForm();
-      } else {
-        alert('Please, complete all fields');
-      }
-    };
+  const onChangeFieldsValue = (
+    event: ChangeEvent<HTMLInputElement>,
+    setFieldValue: Dispatch<SetStateAction<string>>
+  ) => {
+    setFieldValue(event.target.value);
+  };
 
-    return (
-      <HW23Wrapper>
-      <form onSubmit={handleSubmit(onSubmit)}>
-     
-      <InputsContainer>
+  const createEmployeeCard = () => {
+    // Если все значения у нас не пустые, то показываем карточку
+    if (!!nameValue && !!lastNameValue && !!ageValue && !!jobPositionValue) {
+      setUserInfo({
+        name: nameValue,
+        lastName: lastNameValue,
+        ageValue: ageValue,
+        jobPosition: jobPositionValue,
+      });
+      setIsShowCard(true);
+    } else {
+      // Показываем alert если хотя бы одно из полей пустое
+      setIsShowCard(false);
+      setTimeout(() => alert("Введите данные во все поля"), 0);
+    }
+  };
+
+  return (
+    <EmployeeFormWrapper>
+      <EmployeeFormContainer>
         <Input
-          id="firstName"
+          id="first_name_id"
           name="firstName"
-          label="First Name"
-          placeholder="First Name"
-          value= {firstName}
-          onChange={(e) => setFirstName(e.target.value)}
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+            onChangeFieldsValue(event, setNameValue)
+          }
+          value={nameValue}
+          label="Имя"
+          placeholder="Иван"
         />
         <Input
-          id="lastName"
+          id="last_name_id"
           name="lastName"
-          label="Last Name"
-          placeholder="Last Name"
-          value= {lastName}
-          onChange={(e) => setLastName(e.target.value)}
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+            onChangeFieldsValue(event, setLastNameValue)
+          }
+          value={lastNameValue}
+          label="Фамилия"
+          placeholder="Василевский"
         />
         <Input
-          id="age"
+          id="age_id"
           name="age"
-          label="Age"
-          placeholder="Age"
-          value={age}
-          onChange={(e) => setAge(e.target.value)}
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+            onChangeFieldsValue(event, setAgeValue)
+          }
+          value={ageValue}
+          label="Возраст"
+          placeholder="25"
         />
         <Input
-          id="position"
-          name="position"
-          label="Position"
-          placeholder="Position"
-          value={position}
-          onChange={(e) => setPosition(e.target.value)}
+          id="job_position_id"
+          name="job_position"
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+            onChangeFieldsValue(event, setJobPositionValue)
+          }
+          value={jobPositionValue}
+          label="Должность"
+          placeholder="Старший специалист"
         />
-        </InputsContainer>
+        <Button name="Создать" onClick={createEmployeeCard} />
+      </EmployeeFormContainer>
+      {/* Если в левой части от && у вас false, то правая часть(JSX элементы) не показываются, 
+      если же левая часть от && true, то правая часть(JSX элементы) отображается */}
+      {isShowCard && (
+        <EmployeeCard>
+          <EmployeeInfoContainer>
+            <EmployeeTitle>Имя</EmployeeTitle>
+            <EmployeeInfoText>{userInfo.name}</EmployeeInfoText>
+          </EmployeeInfoContainer>
+          <EmployeeInfoContainer>
+            <EmployeeTitle>Фамилия</EmployeeTitle>
+            <EmployeeInfoText>{userInfo.lastName}</EmployeeInfoText>
+          </EmployeeInfoContainer>
+          <EmployeeInfoContainer>
+            <EmployeeTitle>Возраст</EmployeeTitle>
+            <EmployeeInfoText>{userInfo.ageValue}</EmployeeInfoText>
+          </EmployeeInfoContainer>
+          <EmployeeInfoContainer>
+            <EmployeeTitle>Должность</EmployeeTitle>
+            <EmployeeInfoText>{userInfo.jobPosition}</EmployeeInfoText>
+          </EmployeeInfoContainer>
+        </EmployeeCard>
+      )}
+    </EmployeeFormWrapper>
+  );
+}
 
-        <ButtonsContainer>
-    <Button name="Send" type="submit" onClick={handleShowCard} />
-    </ ButtonsContainer>
-      </form>
-      {showSubmittedForm()}
-       </HW23Wrapper>
-    );
-  }
-
-  export default EmployeeForm;
-
-
-
-
-  
+export default EmployeeForm;

@@ -1,4 +1,4 @@
-import EmployeeForm from 'components/EmployeeForm/EmployeeForm';
+import EmployeeForm from 'components/EmployeeForm_VV/EmployeeForm_VV';
 
 import {HW23Wrapper,
   InputsContainer,
