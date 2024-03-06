@@ -46,3 +46,6 @@ export const EmployeeInfoText = styled.p`
   font-weight: bold;
   color: black;
 `;
+export const ErrorContainer = styled.div`
+  color: red;
+`;

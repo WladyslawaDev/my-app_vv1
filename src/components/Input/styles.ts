@@ -29,6 +29,13 @@ export const InputComponent = styled.input`
   }
 
   &:hover {
-    border: ${({disabled}) => (disabled ? '1px solid black' : '1px solid #1f27f5')};
+    border: ${({ disabled }) =>
+      disabled ? "1px solid black" : "1px solid #1f27f5"};
   }
+`;
+
+export const ErrorContainer = styled.div`
+  font-size: 16px;
+  color: red;
+  height: 18px;
 `;
