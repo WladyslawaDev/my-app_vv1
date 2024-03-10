@@ -1,5 +1,10 @@
 import { InputProps } from "./types";
-import { InputContainer, InputComponent, InputLabel } from "./styles";
+import {
+  InputContainer,
+  InputComponent,
+  InputLabel,
+  ErrorContainer,
+} from "./styles";
 
 function Input({
   id,
@@ -10,6 +15,8 @@ function Input({
   type = "text",
   value,
   onChange,
+  checked,
+  error,
 }: InputProps) {
   return (
     <InputContainer>
@@ -22,7 +29,10 @@ function Input({
         disabled={disabled}
         placeholder={placeholder}
         type={type}
+        checked={checked}
       />
+      {/* {!!error && <ErrorContainer>{error}</ErrorContainer>} */}
+      <ErrorContainer>{error}</ErrorContainer>
     </InputContainer>
   );
 }
